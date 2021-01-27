@@ -24,13 +24,13 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p>Mostre que você manja muito da turminha</p>
-            <form onSubmit={function (event) {
+            <form onSubmit={(event) => {
               event.preventDefault();
               router.push(`/quiz?name=${name}`);
             }}
             >
               <Formulario.Input
-                onChange={function (event) {
+                onChange={(event) => {
                   setName(event.target.value);
                 }}
                 placeholder="Qual o seu nome?"

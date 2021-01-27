@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // Component Form
-export const Formulario = styled.form;
+const Formulario = styled.form;
 
 // Component Input
 Formulario.Input = styled.input`

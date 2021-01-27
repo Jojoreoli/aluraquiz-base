@@ -4,25 +4,51 @@
   "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
-      "description": "Essa é pra aquecer",
+      "image": "https://pbs.twimg.com/media/DsoRwYcWwAEAykQ?format=jpg&name=360x360",
+      "title": "Qual o nome do cachorro da avó do Xaveco?",
+      "description": "E por tabela o cachorro do Xaveco também",
       "answer": 2,
       "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
+        "Xaxado",
+        "Xurumela",
+        "Ximbuca",
+        "Xavier"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
+      "image": "https://1.bp.blogspot.com/-Tg7W5e5084o/V9DNvV7s-LI/AAAAAAAAYkM/ZwFxaKVlyU8G-SoJ15FUVpMsJJeW6_zsACLcB/s1600/_HQ_Astronauta_casado_com_Ritinha_1995.jpg",
+      "title": "Qual o nome da ex-namorada que o Astronauta deixou na terra?",
+      "description": "E que sempre o faz pensar se valeu a pena ir pro espaço",
       "answer": 0,
       "alternatives": [
-         "background: linear-gradient(#e66465, #9198e5);",
-         "background: gradient(#e66465, #9198e5);"
+         "Ritinha",
+         "Neide",
+         "Camila",
+         "Priscila"
+      ]
+    },
+    {
+      "image": "https://1.bp.blogspot.com/-dJo6Yi4IuBg/VLGNpj3ojSI/AAAAAAAAE94/xe__Mzy4LKo/s1600/Manezinho_Turma%2Bdo%2BBermudao.jpg",
+      "title": "Os meninos mais velhos do Limoeiro formam a...",
+      "description": "Aí, qualé, tipo assim, maneiro!",
+      "answer": 3,
+      "alternatives": [
+         "Turma do Franjinha",
+         "Turma Descolada",
+         "Turma da Rua de Baixo",
+         "Turma do Bermudão"
+      ]
+    },
+    {
+      "image": "https://pbs.twimg.com/media/Dsi8XKrWsAE1Dbt.jpg",
+      "title": "Como se chama o distúrbio na fala do Cebolinha?",
+      "description": "Que faz os outlos pensalem que ele quer ser dono da Lua e não da lua",
+      "answer": 1,
+      "alternatives": [
+         "Dislexia",
+         "Dislalia",
+         "Discalculia",
+         "Disritmia"
       ]
     }
   ],
