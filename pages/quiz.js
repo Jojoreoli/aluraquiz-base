@@ -15,7 +15,38 @@ function LoadingWidget() {
         <h1>Carregando...</h1>
       </Widget.Header>
       <Widget.Content>
-        AAAAAAAAAAA
+        <p>AAAAAAAAAAA</p>
+      </Widget.Content>
+    </Widget>
+  );
+}
+
+function ResultadoWidget({ results }) {
+  return (
+
+    <Widget>
+      <Widget.Header>
+        <h1>Resultados</h1>
+      </Widget.Header>
+      <Widget.Content>
+        <p>
+          Você acertou
+          {' '}
+          {results.filter((x) => x).length}
+          {' '}
+          pergunta(s)
+        </p>
+        <ul>
+          {results.map((result, index) => {
+            <li key={`result__${result}`}>
+              {index + 1}
+              asdasd
+              { result === true
+                ? 'Acertou'
+                : 'Errou' }
+            </li>;
+          })}
+        </ul>
       </Widget.Content>
     </Widget>
   );
@@ -26,8 +57,13 @@ function QuestionWidget({
   totalQuestions,
   questionIndex,
   onSubmit,
+  addResult,
 }) {
+  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const questionId = `question__${questionIndex}`;
+  const hasAlternativeSelected = selectedAlternative !== undefined;
+  const isCorrect = selectedAlternative === question.answer;
   return (
     <Widget>
       <Widget.Header>
@@ -56,25 +92,37 @@ function QuestionWidget({
         <p>{question.description}</p>
         <Opcoes onSubmit={(event) => {
           event.preventDefault();
-          onSubmit();
+          setIsQuestionSubmited(true);
+          setTimeout(() => {
+            addResult(isCorrect);
+            onSubmit();
+            setIsQuestionSubmited(false);
+            setSelectedAlternative(undefined);
+          }, 1 * 1000);
         }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeId = `alternative__${alternativeIndex}`;
             return (
-              <Opcoes.Opcao htmlFor={alternativeId}>
+              <Opcoes.Opcao
+                htmlFor={alternativeId}
+                key={alternativeId}
+              >
                 <Opcoes.Botao
                   id={alternativeId}
                   name={questionId}
+                  onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
                 />
                 {alternative}
               </Opcoes.Opcao>
             );
           })}
-          <Formulario.Botao type="submit">
+          <Formulario.Botao type="submit" disabled={!hasAlternativeSelected}>
             Enviar
           </Formulario.Botao>
+          {isQuestionSubmited && isCorrect && <p>Correto</p>}
+          {isQuestionSubmited && !isCorrect && <p>Errou</p>}
         </Opcoes>
 
       </Widget.Content>
@@ -88,9 +136,17 @@ const screenStates = {
 };
 export default function QuizPage() {
   const [screenState, setScreenState] = React.useState(screenStates.CARREGANDO);
+  const [results, setResults] = React.useState([]);
   const totalQuestions = db.questions.length;
   const [questionIndex, setQuestionIndex] = React.useState(0);
   const question = db.questions[questionIndex];
+
+  function addResult(result) {
+    setResults([
+      ...results,
+      result,
+    ]);
+  }
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -118,10 +174,11 @@ export default function QuizPage() {
           totalQuestions={totalQuestions}
           questionIndex={questionIndex}
           onSubmit={handleSubmit}
+          addResult={addResult}
         />
         )}
         {screenState === screenStates.CARREGANDO && <LoadingWidget />}
-        {screenState === screenStates.RESULT && <div>resultado bla bla</div>}
+        {screenState === screenStates.RESULT && <ResultadoWidget results={results} />}
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/jojoreoli" />
     </QuizBackground>
